@@ -10,28 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161013020550) do
+ActiveRecord::Schema.define(version: 20161013033136) do
 
   create_table "locations", force: :cascade do |t|
     t.string   "code",       limit: 10
-    t.string   "name",       limit: 80
-    t.integer  "patient_id"
+    t.string   "name",       limit: 80, null: false
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
-    t.index ["patient_id"], name: "index_locations_on_patient_id"
   end
 
   create_table "patients", force: :cascade do |t|
-    t.string   "first_name",   limit: 30
-    t.string   "middle_name",  limit: 10
-    t.string   "last_name",    limit: 30
+    t.string   "first_name",    limit: 30,                 null: false
+    t.string   "middle_name",   limit: 10
+    t.string   "last_name",     limit: 30,                 null: false
     t.datetime "birth"
     t.integer  "gender"
-    t.integer  "status"
-    t.integer  "location_id"
-    t.integer  "viewed_count"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "status",                   default: 0,     null: false
+    t.integer  "location_id",                              null: false
+    t.integer  "viewed_count",             default: 0
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.boolean  "delete_status",            default: false
     t.index ["location_id"], name: "index_patients_on_location_id"
   end
 
