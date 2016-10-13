@@ -10,5 +10,7 @@
 #
 
 class Location < ApplicationRecord
-    validates :name, presence: true
+    validates :name, presence: true , length: { maximum: 80 }
+    validates :code, length: { maximum: 10 }
+    has_many :patients
 end

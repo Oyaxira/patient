@@ -1,20 +1,20 @@
 <%= form_for :patient , url: {action: "create"} do |f| %>
-    <%= f.text_field(:first_name ,class:"form-control form-title", placeholder: "first_name")%>
+    <%= f.text_field(:first_name , placeholder: "first_name")%>
     <br>
-    <%= f.text_field(:middle_name ,class:"form-control form-title", placeholder: "middle_name")%>
+    <%= f.text_field(:middle_name , placeholder: "middle_name")%>
     <br>
-    <%= f.text_field(:last_name ,class:"form-control form-title", placeholder: "last_name")%>
+    <%= f.text_field(:last_name , placeholder: "last_name")%>
     <br>
-    <%= select_date Date.today, prefix: :birth %>
+    <%= f.date_select :birth, prefix: :birth %>
     <br>
     <%= f.collection_select(:location_id, Location.all, :id, :name) %>
     <br>
-    <%= radio_button_tag(:gender, "not_available") %>
-    <%= radio_button_tag(:gender, "male") %>
-    <%= radio_button_tag(:gender, "female") %>
+    <%= f.radio_button :gender, "not_available", :checked => true %>
+    <%= f.radio_button :gender, "male" %>
+    <%= f.radio_button :gender, "female" %>
     <br>
-    <% status = [['initial', 0],['referred', 1], ['treatment', 2], ['closed', 3]] %>
-    <%= f.select(:gender, gender.collect {|p| [p.first, p.last]}, {:include_blank => false})%>
+  <% status = [['initial', 'initial'],['referred', 'referred'], ['treatment', 'treatment'], ['closed', 'closed']] %>
+    <%= f.select(:status, status.collect {|p| [p.first, p.last]}, {:include_blank => false})%>
   <p>
     <%= f.submit '保存'%>
   </p>

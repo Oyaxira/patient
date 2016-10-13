@@ -1,11 +1,12 @@
 class PatientsController < ApplicationController
-  before_action :find_patient, only: [:show, :update, :destroy]
+  before_action :find_patient, only: [:show, :update, :destroy, :edit]
+  before_action :incr_view_count, only: :show
 
   def new
   end
 
   def index
-    @patients = Patient.all
+    @patients = Patient.all.includes(:location)
   end
 
   def show
@@ -33,8 +34,12 @@ class PatientsController < ApplicationController
       @patient = Patient.find(params[:id])
     end
 
+    def incr_view_count
+      @patient.viewed_count += 1
+      @patient.save
+    end
     def patient_params
-      birth = Date.civil(params[:birth][:year].to_i, params[:birth][:month].to_i, params[:birth][:day].to_i)
+      birth = Date.civil(params[:birth]["birth(1i)"].to_i, params[:birth]["birth(2i)"].to_i, params[:birth]["birth(3i)"].to_i)
       param = params.require(:patient).permit(:first_name,
                                       :middle_name,
                                       :last_name,
@@ -43,6 +48,7 @@ class PatientsController < ApplicationController
                                       :status,
                                       :location_id)
       param["birth"] = birth
+      param["status"] = param["status"].to_i
       param
     end
 end

@@ -21,17 +21,18 @@
 #
 
 class Patient < ApplicationRecord
-  validates :first_name, presence: true
-  validates :last_name, presence: true
+  validates :first_name, presence: true, length: { maximum: 30 }
+  validates :last_name, presence: true, length: { maximum: 30 }
+  validates :middle_name, length: { maximum: 10 }
   validates :location_id, presence: true
   validates :status, presence: true
-  enum status: [initial:0, referred: 1, treatment: 2, closed: 3]
+  enum status: {initial: 0, referred: 1, treatment: 2, closed: 3}
   enum gender: [:not_available, :male, :female]
   default_scope { where(delete_status: false) }
-
+  belongs_to :location
 
   def destroy
-    self.update_column(delete_status: true)
+    self.update_column(:delete_status, true)
   end
 
 end

@@ -1,0 +1,27 @@
+<%patient= @patient%>
+<ul>
+  <li>
+    MR: MR<%="%06d" % patient.id%>
+  </li>
+  <li>
+    Fullname: <%= "#{patient.last_name}, #{patient.first_name} #{patient.middle_name}"%>
+  </li>
+  <li>
+    Age: <%=Time.now.year - patient.birth.year%>
+  </li>
+  <li>
+    Gender: <%=patient.gender%>
+  </li>
+  <li>
+    Status: <%=patient.status%>
+  </li>
+  <li>
+    Location name: <%=patient.location.name%>
+  </li>
+  <li>
+    Viewed Count:  <%=patient.viewed_count%>
+  </li>
+  <li>
+    <%=link_to 'list', patients_path(patient.id)%>
+  </li>
+</ul>

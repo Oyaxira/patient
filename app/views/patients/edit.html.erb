@@ -1,0 +1,21 @@
+<%= form_for :patient , url: patient_path(@patient), method: :patch  do |f| %>
+      <%= f.text_field(:first_name , placeholder: "first_name")%>
+      <br>
+      <%= f.text_field(:middle_name , placeholder: "middle_name")%>
+      <br>
+      <%= f.text_field(:last_name , placeholder: "last_name")%>
+      <br>
+      <%= f.date_select :birth , prefix: :birth%>
+      <br>
+      <%= f.collection_select(:location_id, Location.all, :id, :name) %>
+      <br>
+      <%= f.radio_button :gender, "not_available", :checked => @patient.not_available? ? true:false %>
+      <%= f.radio_button :gender, "male", :checked => @patient.male? ? true:false %>
+      <%= f.radio_button :gender, "female", :checked => @patient.female? ? true:false %>
+      <br>
+      <% status = [['initial', 'initial'],['referred', 'referred'], ['treatment', 'treatment'], ['closed', 'closed']] %>
+      <%= f.select(:status, status.collect {|p| [p.first, p.last]}, {:include_blank => false}, :selected => @patient.status)%>
+    <p>
+      <%= f.submit '保存'%>
+    </p>
+<% end %>

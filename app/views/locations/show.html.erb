@@ -1,0 +1,9 @@
+location
+
+<h1>
+  name: <%=@location.name%><br>
+  code: <%=@location.code%>
+</h1>
+
+local patient
+<%=render partial: "patients/patient", collection: @location.patients%>
