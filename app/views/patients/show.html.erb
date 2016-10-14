@@ -4,24 +4,24 @@
     MR: MR<%="%06d" % patient.id%>
   </li>
   <li>
-    Fullname: <%= "#{patient.last_name}, #{patient.first_name} #{patient.middle_name}"%>
+    <%=t("Fullname")%>: <%= "#{patient.last_name}, #{patient.first_name} #{patient.middle_name}"%>
   </li>
   <li>
-    Age: <%=Time.now.year - patient.birth.year%>
+      <%=t("Age")%>: <%=Time.now.year - patient.birth.year%>
   </li>
   <li>
-    Gender: <%=patient.gender%>
+      <%=t("Gender")%>: <%=t patient.gender%>
   </li>
   <li>
-    Status: <%=patient.status%>
+      <%=t("Status")%>: <%=t patient.status%>
   </li>
   <li>
-    Location name: <%=patient.location.name%>
+      <%=t("Location_name")%>: <%=patient.location.name%>
   </li>
   <li>
-    Viewed Count:  <%=patient.viewed_count%>
+    <%=t("Viewed_Count")%>:  <%=patient.viewed_count%>
   </li>
   <li>
-    <%=link_to 'list', patients_path(patient.id)%>
+    <%=link_to t('back_index'), patients_path(patient.id)%>
   </li>
 </ul>

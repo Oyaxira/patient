@@ -17,6 +17,11 @@
 
 FactoryGirl.define do
   factory :patient do
-    
+    sequence(:first_name) { |n| "first_name#{n}" }
+    sequence(:middle_name) { |n| "middle_name#{n}" }
+    sequence(:last_name) { |n| "last_name#{n}" }
+    sequence(:birth) { |n| Time.current-n.years }
+    status 0
+    gender 0
   end
 end

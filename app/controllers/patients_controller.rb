@@ -18,7 +18,10 @@ class PatientsController < ApplicationController
 
   def create
     @patient = Patient.new(patient_params)
-    @patient.save
+    if @patient.save
+      redirect_to patient_path(@patient)
+    else
+    end
   end
 
   def update
@@ -38,6 +41,7 @@ class PatientsController < ApplicationController
       @patient.viewed_count += 1
       @patient.save
     end
+
     def patient_params
       birth = Date.civil(params[:birth]["birth(1i)"].to_i, params[:birth]["birth(2i)"].to_i, params[:birth]["birth(3i)"].to_i)
       param = params.require(:patient).permit(:first_name,
@@ -48,7 +52,6 @@ class PatientsController < ApplicationController
                                       :status,
                                       :location_id)
       param["birth"] = birth
-      param["status"] = param["status"].to_i
       param
     end
 end

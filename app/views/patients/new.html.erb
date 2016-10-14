@@ -16,6 +16,6 @@
   <% status = [['initial', 'initial'],['referred', 'referred'], ['treatment', 'treatment'], ['closed', 'closed']] %>
     <%= f.select(:status, status.collect {|p| [p.first, p.last]}, {:include_blank => false})%>
   <p>
-    <%= f.submit '保存'%>
+    <%= f.submit I18n.t("save")%>
   </p>
 <% end %>

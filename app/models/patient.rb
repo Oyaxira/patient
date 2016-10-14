@@ -30,7 +30,7 @@ class Patient < ApplicationRecord
   enum gender: [:not_available, :male, :female]
   default_scope { where(delete_status: false) }
   belongs_to :location
-
+  scope :on_treatment,  ->{ where(status: 2) }
   def destroy
     self.update_column(:delete_status, true)
   end

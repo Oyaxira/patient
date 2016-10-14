@@ -9,6 +9,8 @@
   </head>
 
   <body>
+    <%=link_to "English", "#{request.path}?local=en"%>
+    <%=link_to "中文", "#{request.path}?local=zh-CN"%>
     <%= yield %>
   </body>
 </html>

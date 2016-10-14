@@ -1,21 +1,24 @@
 <%= form_for :patient , url: patient_path(@patient), method: :patch  do |f| %>
-      <%= f.text_field(:first_name , placeholder: "first_name")%>
+      <%= f.text_field(:first_name , placeholder: t("first_name"))%>
       <br>
-      <%= f.text_field(:middle_name , placeholder: "middle_name")%>
+      <%= f.text_field(:middle_name , placeholder: t("middle_name"))%>
       <br>
-      <%= f.text_field(:last_name , placeholder: "last_name")%>
+      <%= f.text_field(:last_name , placeholder: t("last_name"))%>
       <br>
       <%= f.date_select :birth , prefix: :birth%>
       <br>
       <%= f.collection_select(:location_id, Location.all, :id, :name) %>
       <br>
       <%= f.radio_button :gender, "not_available", :checked => @patient.not_available? ? true:false %>
+      <%= f.label t("not_available") %>
       <%= f.radio_button :gender, "male", :checked => @patient.male? ? true:false %>
+      <%= f.label t("male") %>
       <%= f.radio_button :gender, "female", :checked => @patient.female? ? true:false %>
+      <%= f.label t("female") %>
       <br>
-      <% status = [['initial', 'initial'],['referred', 'referred'], ['treatment', 'treatment'], ['closed', 'closed']] %>
+      <% status = [[t('initial'), 'initial'],[t('referred'), 'referred'], [t('treatment'), 'treatment'], [t('closed'), 'closed']] %>
       <%= f.select(:status, status.collect {|p| [p.first, p.last]}, {:include_blank => false}, :selected => @patient.status)%>
     <p>
-      <%= f.submit '保存'%>
+      <%= f.submit t("save")%>
     </p>
 <% end %>

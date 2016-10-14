@@ -16,4 +16,8 @@ class LocationTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
+
+  should validate_length_of(:code).is_at_most(10)
+  should validate_length_of(:name).is_at_most(80)
+  should validate_presence_of(:name)
 end

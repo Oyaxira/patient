@@ -12,6 +12,7 @@
 
 FactoryGirl.define do
   factory :location do
-    
+    sequence(:name) { |n| "test#{n}" }
+    sequence(:code) { |n| "code#{n}" }
   end
 end
