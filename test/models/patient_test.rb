@@ -28,4 +28,5 @@ class PatientTest < ActiveSupport::TestCase
   should validate_presence_of(:last_name).with_message("姓必须存在")
   should validate_presence_of(:location).with_message("必须存在有效位置")
   should validate_presence_of(:status).with_message("状态必须设置")
+  should belong_to(:location)
 end

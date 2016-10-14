@@ -20,4 +20,5 @@ class LocationTest < ActiveSupport::TestCase
   should validate_length_of(:code).is_at_most(10)
   should validate_length_of(:name).is_at_most(80)
   should validate_presence_of(:name)
+  should have_many(:patients)
 end
