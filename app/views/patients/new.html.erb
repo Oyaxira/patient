@@ -1,19 +1,39 @@
 <%= form_for :patient , url: {action: "create"} do |f| %>
-    <%= f.text_field(:first_name , placeholder: "first_name")%>
+    <% if @patient.errors.any? %>
+     <div id="error_explanation">
+       <h2><%= pluralize(@patient.errors.count, t('patient_new', scope: [:errors])) %> </h2>
+       <ul>
+       <% @patient.errors.messages.each do |msg| %>
+         <li><%= msg[1][0] %></li>
+       <% end %>
+       </ul>
+     </div>
+     <% end %>
+     <%= f.label t("first_name") %>:
+    <%= f.text_field(:first_name , placeholder: t("first_name"))%>
     <br>
-    <%= f.text_field(:middle_name , placeholder: "middle_name")%>
+    <%= f.label t("middle_name") %>:
+    <%= f.text_field(:middle_name , placeholder: t("middle_name"))%>
     <br>
-    <%= f.text_field(:last_name , placeholder: "last_name")%>
+    <%= f.label t("last_name") %>:
+    <%= f.text_field(:last_name , placeholder: t("last_name"))%>
     <br>
+    <%= f.label t("birth") %>:
     <%= f.date_select :birth, prefix: :birth %>
     <br>
+    <%= f.label t("Location_name") %>:
     <%= f.collection_select(:location_id, Location.all, :id, :name) %>
     <br>
+    <%= f.label t("Gender") %>:
     <%= f.radio_button :gender, "not_available", :checked => true %>
+    <%= f.label t("not_available") %>
     <%= f.radio_button :gender, "male" %>
+    <%= f.label t("male") %>
     <%= f.radio_button :gender, "female" %>
+    <%= f.label t("female") %>
     <br>
-  <% status = [['initial', 'initial'],['referred', 'referred'], ['treatment', 'treatment'], ['closed', 'closed']] %>
+    <% status = [[t('initial'), 'initial'],[t('referred'), 'referred'], [t('treatment'), 'treatment'], [t('closed'), 'closed']] %>
+    <%= f.label t("Status") %>:
     <%= f.select(:status, status.collect {|p| [p.first, p.last]}, {:include_blank => false})%>
   <p>
     <%= f.submit I18n.t("save")%>

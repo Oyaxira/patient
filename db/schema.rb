@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20161013033136) do
     t.string   "last_name",     limit: 30,                 null: false
     t.datetime "birth"
     t.integer  "gender"
-    t.integer  "status",                   default: 0,     null: false
+    t.integer  "status",                                   null: false
     t.integer  "location_id",                              null: false
     t.integer  "viewed_count",             default: 0
     t.datetime "created_at",                               null: false

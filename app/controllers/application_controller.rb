@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
 
   def set_locale
-    I18n.locale = params[:local] || I18n.default_locale
+    session[:local] = params[:local] if params[:local]
+    I18n.locale = session[:local] || I18n.default_locale
   end
 end

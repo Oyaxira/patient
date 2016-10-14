@@ -11,6 +11,7 @@
   <body>
     <%=link_to "English", "#{request.path}?local=en"%>
     <%=link_to "中文", "#{request.path}?local=zh-CN"%>
+    <%=link_to t('back_index'), patients_path%>
     <%= yield %>
   </body>
 </html>

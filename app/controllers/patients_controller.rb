@@ -3,6 +3,7 @@ class PatientsController < ApplicationController
   before_action :incr_view_count, only: :show
 
   def new
+    @patient = Patient.new
   end
 
   def index
@@ -21,15 +22,21 @@ class PatientsController < ApplicationController
     if @patient.save
       redirect_to patient_path(@patient)
     else
+      render 'new'
     end
   end
 
   def update
-    @patient.update(patient_params)
+    if @patient.update(patient_params)
+      redirect_to patient_path(@patient)
+    else
+      render 'edit'
+    end
   end
 
   def destroy
     @patient.destroy
+    redirect_to patients_path
   end
 
   private
@@ -43,15 +50,16 @@ class PatientsController < ApplicationController
     end
 
     def patient_params
-      birth = Date.civil(params[:birth]["birth(1i)"].to_i, params[:birth]["birth(2i)"].to_i, params[:birth]["birth(3i)"].to_i)
       param = params.require(:patient).permit(:first_name,
                                       :middle_name,
                                       :last_name,
-                                      :birth,
                                       :gender,
                                       :status,
                                       :location_id)
-      param["birth"] = birth
+      if params[:birth]
+          birth = Date.civil(params[:birth]["birth(1i)"].to_i, params[:birth]["birth(2i)"].to_i, params[:birth]["birth(3i)"].to_i)
+          param["birth"] = birth
+      end
       param
     end
 end

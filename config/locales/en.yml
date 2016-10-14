@@ -20,7 +20,28 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  location: "location"
+  save: "save"
+  local_patient: "local patient"
+  first_name: "first_name"
+  middle_name: "middle_name"
+  last_name: "last_name"
+  not_available: "not_available"
+  male: "male"
+  Gender: "Gender"
+  Status: "Status"
+  female: "female"
+  birth: "birth"
   Location_name: "Location Name"
   Viewed_Count: "Viewed Count"
   back_index: "back index"
   new_patient: "new patient"
+  errors:
+    first_name: "first_name must existing"
+    last_name: "last_name must existing"
+    first_name_length: "first name's length must less than 30"
+    last_name_length: "last name's length must less than 30"
+    middle_name: "middle name's length must less than 10"
+    status: "status must existing"
+    location: "location must existing"
+    patient_new: "errors prohibited this patient from being saved:"

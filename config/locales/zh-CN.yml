@@ -21,6 +21,8 @@
 
 "zh-CN":
   save: "保存"
+  name: "名字"
+  local_patient: "当地病人"
   not_available: "不确定"
   male: "男"
   female: "女"
@@ -33,6 +35,7 @@
   last_name: "姓"
   Fullname: "全名"
   Age: "年龄"
+  birth: "生日"
   Gender: "性别"
   Status: "状态"
   Location_name: "地区名"
@@ -42,3 +45,13 @@
   edit: "编辑"
   delete: "删除"
   new_patient: "新建病人"
+  location: "位置"
+  errors:
+    first_name: "名字必须存在"
+    last_name: "姓必须存在"
+    first_name_length: "名字长度必须小于30"
+    last_name_length: "姓长度必须小于30"
+    middle_name: "中间名长度必须小于10"
+    status: "状态必须设置"
+    location: "必须存在有效位置"
+    patient_new: "错误导致在存储前被禁止:"

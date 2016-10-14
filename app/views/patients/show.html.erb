@@ -16,12 +16,9 @@
       <%=t("Status")%>: <%=t patient.status%>
   </li>
   <li>
-      <%=t("Location_name")%>: <%=patient.location.name%>
+      <%=t("Location_name")%>: <%=link_to patient.location.name, location_path(patient.location) %>
   </li>
   <li>
     <%=t("Viewed_Count")%>:  <%=patient.viewed_count%>
-  </li>
-  <li>
-    <%=link_to t('back_index'), patients_path(patient.id)%>
   </li>
 </ul>

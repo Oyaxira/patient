@@ -8,7 +8,7 @@
 #  last_name     :string(30)       not null
 #  birth         :datetime
 #  gender        :integer
-#  status        :integer          default({:initial=>0, :referred=>1, :treatment=>2, :closed=>3}), not null
+#  status        :integer          not null
 #  location_id   :integer          not null
 #  viewed_count  :integer          default(0)
 #  created_at    :datetime         not null
@@ -21,15 +21,15 @@
 #
 
 class Patient < ApplicationRecord
-  validates :first_name, presence: true, length: { maximum: 30 }
-  validates :last_name, presence: true, length: { maximum: 30 }
-  validates :middle_name, length: { maximum: 10 }
-  validates :location_id, presence: true
-  validates :status, presence: true
+  validates :first_name, presence: {  message: "#{I18n.t('first_name', scope: [:errors])}"} , length: { maximum: 30, message: "#{I18n.t('first_name_length', scope: [:errors])}" }
+  validates :last_name, presence: {  message: "#{I18n.t('last_name', scope: [:errors])}"} , length: { maximum: 30 , message: "#{I18n.t('last_name_length', scope: [:errors])}"}
+  validates :middle_name, length: { maximum: 10, message: "#{I18n.t('middle_name', scope: [:errors])}" }
+  validates :status, presence: {  message: "#{I18n.t('status', scope: [:errors])}"}
   enum status: {initial: 0, referred: 1, treatment: 2, closed: 3}
   enum gender: [:not_available, :male, :female]
   default_scope { where(delete_status: false) }
   belongs_to :location
+  validates :location, presence: { message: "#{I18n.t('location', scope: [:errors])}"}
   scope :on_treatment,  ->{ where(status: 2) }
   def destroy
     self.update_column(:delete_status, true)

@@ -1,9 +1,11 @@
-location
+
 
 <h1>
-  name: <%=@location.name%><br>
-  code: <%=@location.code%>
+  <%=t("location")%>
+  <br>
+  <%=t("name")%>: <%=@location.name%><br>
+  CODE: <%=@location.code%>
 </h1>
 
-local patient
+<%=t("local_patient")%>:
 <%=render partial: "patients/patient", collection: @location.patients%>
