@@ -56,7 +56,10 @@ class PatientsControllerTest < ActionController::TestCase
   end
 
   test "should destroy" do
+
     delete :destroy, params: { id: @patient.id }
+    @patient.reload
+    assert @patient.delete_status
     assert_redirected_to patients_path
   end
 end
