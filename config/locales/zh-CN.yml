@@ -1,0 +1,44 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+"zh-CN":
+  save: "保存"
+  not_available: "不确定"
+  male: "男"
+  female: "女"
+  initial: "初始"
+  referred: "确诊"
+  treatment: "治疗"
+  closed: "关闭"
+  first_name: "名字"
+  middle_name: "中间名"
+  last_name: "姓"
+  Fullname: "全名"
+  Age: "年龄"
+  Gender: "性别"
+  Status: "状态"
+  Location_name: "地区名"
+  Viewed_Count: "查看次数"
+  back_index: "返回列表"
+  show: "显示"
+  edit: "编辑"
+  delete: "删除"
+  new_patient: "新建病人"
