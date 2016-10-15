@@ -7,7 +7,7 @@
     <%=t("Fullname")%>: <%= "#{patient.last_name}, #{patient.first_name} #{patient.middle_name}"%>
   </li>
   <li>
-      <%=t("Age")%>: <%=Time.now.year - patient.birth.year%>
+      <%=t("Age")%>: <%=patient.birth.nil? ? 0:(Time.now.year - patient.birth.year)%>
   </li>
   <li>
       <%=t("Gender")%>: <%=t patient.gender%>
